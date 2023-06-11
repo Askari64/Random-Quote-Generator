@@ -12,6 +12,7 @@ function App() {
     <>
     <h1>Count: {count}</h1>
     <button onClick={handleClick}>Press</button>
+    <p>Testing out vite</p>
     </>
   )
 }
