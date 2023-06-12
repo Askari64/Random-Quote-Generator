@@ -26,7 +26,11 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [count])
+  }, [count]);
+
+  useEffect(() =>{
+    document.title = quote.author;
+  },[quote.author]);
 
   return (
     <>
