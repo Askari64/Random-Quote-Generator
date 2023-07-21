@@ -19,7 +19,7 @@ The second useEffect hook runs whenever the count or quoteData state changes. It
 
 The third useEffect hook runs whenever the quote.author state changes. It updates the document title based on the current quote's author. If the author is available, it sets the document title to the author's name; otherwise, it sets it to "Unknown Author".
 
-The JSX returned by the component renders the current quote and author inside <h1> and <h3> tags, respectively. If the author is unknown, it displays "Unknown Author" instead. There is also a button with the onClick event set to the handleClick function, allowing the user to generate a new random quote.
+The JSX returned by the component renders the current quote and author inside h1 and h3 tags, respectively. If the author is unknown, it displays "Unknown Author" instead. There is also a button with the onClick event set to the handleClick function, allowing the user to generate a new random quote.
 
 Overall, this code sets up a simple random quote generator in React, fetching quotes from an API and displaying them dynamically.
 
@@ -83,11 +83,13 @@ Feel free to explore the code and make any modifications or enhancements to cust
 ## Usage
 
 # To start the development server
+```shell
 npm run dev
-
+```
 # To build the project for production
+```shell
 npm run build
-
+```
 For additional scripts and commands, refer to the project's package.json file.
 
 ## Contributing
@@ -97,4 +99,6 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 This project is licensed under the MIT License.
 
 
-<code>Make sure to replace "your-username" and "your-project" with your actual GitHub username and project name.<code>
+```shell
+Make sure to replace "your-username" and "your-project" with your actual GitHub username and project name.
+```
