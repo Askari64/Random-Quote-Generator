@@ -3,16 +3,21 @@ import './App.css'
 import axios from 'axios';
 
 function App() {
+
+  interface Quote {
+    text: string;
+    author: string;
+  }
   // State variables
-  const [quote, setQuote] = useState({ text: '', author: '' }); // Store the current quote
+  const [quote, setQuote] = useState<Quote>({ text: '', author: '' }); // Store the current quote
   const [quoteData, setQuoteData] = useState([]); // Store the data fetched from the API
   const [count, setCount] = useState(0); // Counter for selecting a random quote
-  const [arrLen, setArrLen] = useState(0); // Length of the quote data array
+  const [loading, setLoading] = useState(true);
   const quoteApi: any = 'https://type.fit/api/quotes'; // API endpoint for fetching quotes
 
   // Button click event handler
   const handleClick = () => {
-    setCount(Math.ceil(Math.random() * arrLen)); // Generate a random count to select a quote
+    setCount(Math.floor(Math.random() * quoteData.length)); // Generate a random count to select a quote
   }
 
   // Fetch quotes from the API and store the data in quoteData
@@ -20,8 +25,9 @@ function App() {
     axios.get(quoteApi)
       .then((res) => {
         console.log(res);
-        setArrLen(res.data.length);
         setQuoteData(res.data);
+        handleClick(); 
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -48,9 +54,12 @@ function App() {
   // Rendered JSX
   return (
     <>
-      <h1>"{quote.text}"</h1>
-      {quote.author ? <h3>{quote.author}</h3> : <h3>Unknown Author</h3>}
-      <button onClick={handleClick}>Random Quote</button>
+      {loading ? <h1>Loading...</h1> :
+        <>
+          <h1>"{quote.text}"</h1>
+          {quote.author ? <h3>{quote.author}</h3> : <h3>Unknown Author</h3>}
+          <button onClick={handleClick}>Random Quote</button>
+        </>}
     </>
   )
 }
