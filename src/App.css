@@ -1,7 +1,66 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* Hide scroll bars */
+  background-color: palevioletred;
+}
+
+.app-container {
+  background-size: cover; /* Adjust background image to cover the container */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
+#quote-text{
+  max-width: 85vw;
+}
+
+/* Add styles for the content inside app-container */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-bottom: 1rem;
+}
+
+input[type='file'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+
+.change-background {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+}
+.change-background:hover {
+  border-color: #646cff;
+  background-color: #FFFF00;
+  color: #1a1a1a;
+}

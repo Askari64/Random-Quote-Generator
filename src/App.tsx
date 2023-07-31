@@ -12,8 +12,17 @@ function App() {
   const [quote, setQuote] = useState<Quote>({ text: '', author: '' }); // Store the current quote
   const [quoteData, setQuoteData] = useState([]); // Store the data fetched from the API
   const [count, setCount] = useState(0); // Counter for selecting a random quote
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Displays loading
+  const [imageBackground, setImageBackground] = useState<string | null> (null); // set image background
   const quoteApi: any = 'https://type.fit/api/quotes'; // API endpoint for fetching quotes
+
+  // Background Image Change Handler
+  const handleBackgroundChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      setImageBackground(URL.createObjectURL(file))
+    }
+  };
 
   // Button click event handler
   const handleClick = () => {
@@ -53,15 +62,22 @@ function App() {
 
   // Rendered JSX
   return (
-    <>
+    <div className='app-container' style={{ backgroundImage: imageBackground ? `url(${imageBackground})` : undefined }}>
       {loading ? <h1>Loading...</h1> :
         <>
-          <h1>"{quote.text}"</h1>
-          {quote.author ? <h3>{quote.author}</h3> : <h3>Unknown Author</h3>}
+          <div className='quote-container'>
+            <h1 id='quote-text'>"{quote.text}"</h1>
+            {quote.author ? <h3>{quote.author}</h3> : <h3>Unknown Author</h3>}
+          </div>
           <button onClick={handleClick}>Random Quote</button>
+          {/* Use a label for the file input */}
+          <label className='change-background'>
+            Change Background
+            <input type='file' accept='image/*' onChange={handleBackgroundChange} />
+          </label>
         </>}
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
